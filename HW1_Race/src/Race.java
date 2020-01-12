@@ -16,7 +16,8 @@ public class Race {
     String name;
 
     //constructor
-    public Race(){
+    //Signature: (Car Car Car Car ) => (  )
+    public Race(Car c1, Car c2, Car c3, Car c4){
 
     }
 
