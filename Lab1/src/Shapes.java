@@ -7,7 +7,10 @@ interface IShape {
 /*
     NOTES:
     - Difference between Class/object and instance
-    -
+    - 3 parts to documentation of a method/function
+        - Purpose Statement
+        - Signature
+        - TESTS
  */
 // to represent a circle
 class Circle implements IShape {
@@ -25,6 +28,7 @@ class Circle implements IShape {
 
     /**
      * Calculates area of a circle.
+     * () -> Double
      * @return pi * r^2 as double
      */
     public double getArea() {
