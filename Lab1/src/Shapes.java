@@ -1,6 +1,7 @@
 // to represent a geometric shape
 interface IShape {
     double getArea();
+    // TODO: this is how todo's work
 }
 
 /*
@@ -44,7 +45,12 @@ class Rect implements IShape {
         this.w = w;
         this.h = h;
     }
+
+    public double getArea() {
+        return w * h;
+    }
 }
+
 
 // to represent a combined shape
 class Combo implements IShape {
@@ -55,16 +61,28 @@ class Combo implements IShape {
         this.top = top;
         this.bot = bot;
     }
+
+    public double getArea() {
+        return this.top.getArea() + this.bot.getArea();
+    }
 }
 
 
 // to represent examples and tests for shapes
 class ExamplesShapes {
-    IShape circle = new Circle(50, 50, 50);
-    IShape rleft = new Rect(20, 20, 20, 20);
-    IShape rBot = new Rect(20, 60, 60, 20);
+    public static void main(String args[]) {
+        IShape circle = new Circle(50, 50, 50);
+        IShape rleft = new Rect(20, 20, 20, 20);
+        IShape rBot = new Rect(20, 60, 60, 20);
 
-    IShape addMouth = new Combo(this.rBot, this.circle);
-    IShape addLeftEye = new Combo(this.rleft, this.addMouth);
-    IShape face = new Combo(new Rect(60, 20, 20, 20), this.addLeftEye);
+        IShape addMouth = new Combo(rBot, circle);
+        IShape addLeftEye = new Combo(rleft, addMouth);
+        IShape face = new Combo(new Rect(60, 20, 20, 20), addLeftEye);
+
+        System.out.println(test1(addMouth)+ "\n" + test1(circle) + "\n" + test1(rBot));
+    }
+
+    public static double test1(IShape A){
+        return A.getArea();
+    }
 }
